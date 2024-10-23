@@ -46,44 +46,37 @@
         </svg>
         <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
       </button>
+
       <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
         <li>
           <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
-            aria-pressed="false">
+            @click="changeTheme('light')" aria-pressed="false">
             <svg class="bi me-2 opacity-50" width="1em" height="1em">
               <use href="#sun-fill"></use>
             </svg>
             Light
-            <svg class="bi ms-auto d-none" width="1em" height="1em">
-              <use href="#check2"></use>
-            </svg>
           </button>
         </li>
         <li>
           <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
-            aria-pressed="false">
+            @click="changeTheme('dark')" aria-pressed="false">
             <svg class="bi me-2 opacity-50" width="1em" height="1em">
               <use href="#moon-stars-fill"></use>
             </svg>
             Dark
-            <svg class="bi ms-auto d-none" width="1em" height="1em">
-              <use href="#check2"></use>
-            </svg>
           </button>
         </li>
         <li>
           <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
-            aria-pressed="true">
+            @click="changeTheme('auto')" aria-pressed="true">
             <svg class="bi me-2 opacity-50" width="1em" height="1em">
               <use href="#circle-half"></use>
             </svg>
             Auto
-            <svg class="bi ms-auto d-none" width="1em" height="1em">
-              <use href="#check2"></use>
-            </svg>
           </button>
         </li>
       </ul>
+
     </div>
 
 
@@ -92,17 +85,23 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-8 col-md-7 py-4">
-              <h4>About</h4>
-              <p class="text-body-secondary">Add some information about the album below, the author, or any other
-                background context. Make it a few sentences long so folks can pick up some informative tidbits. Then,
-                link them off to some social networking sites or contact information.</p>
+              <h4>Sobre</h4>
+              <p class="text-body-secondary">Bem-vindo à nossa página de catálogo de filmes, onde você pode explorar uma
+                vasta seleção de títulos de todos os gêneros! Descubra novas histórias, reveja clássicos e encontre
+                recomendações personalizadas para a sua próxima sessão de cinema. Aqui, cada filme conta uma história, e
+                estamos aqui para ajudar você a encontrá-las!</p>
             </div>
             <div class="col-sm-4 offset-md-1 py-4">
-              <h4>Contact</h4>
+              <h4>Contatos</h4>
               <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
+                <li><a href="https://x.com/NetflixBrasil?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                    target="_blank" class="text-white">Twitter</a></li>
+                <li><a href="https://www.facebook.com/netflixbrasil/?locale=pt_BR" target="_blank"
+                    class="text-white">Facebook</a></li>
+                <li><a href="https://www.instagram.com/netflixbrasil/" target="_blank" class="text-white">Instagram</a>
+                </li>
+                <li><a href="https://www.youtube.com/channel/UCc1l5mTmAv2GC_PXrBpqyKQ" target="_blank"
+                    class="text-white">YouTube</a></li>
               </ul>
             </div>
           </div>
@@ -111,13 +110,7 @@
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
           <a href="#" class="navbar-brand d-flex align-items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
-              stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
-              viewBox="0 0 24 24">
-              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-              <circle cx="12" cy="13" r="4" />
-            </svg>
-            <strong>Album</strong>
+            <img src="../../public/images/Netflix_Logo_RGB.png" alt="logo" width="100">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
             aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -132,12 +125,12 @@
       <section class="py-5 text-center container">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">Album example</h1>
-            <p class="lead text-body-secondary">Something short and leading about the collection below—its contents, the
-              creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
+            <img src="../../public/images/Netflix_Logo_RGB.png" alt="logo" width="500">
+            <p class="lead text-body-secondary">Bem-vindo à nossa página de catálogo de filmes! Descubra novas
+              histórias aqui cada filme conta uma história, e estamos aqui para ajudar você a encontrá-las!</p>
             <p>
-              <a href="#" class="btn btn-primary my-2">Main call to action</a>
-              <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+              <a href="#" class="teste btn btn-primary my-2">Contato</a>
+              <a href="#" class="btn btn-secondary my-2">Favoritos</a>
             </p>
           </div>
         </div>
@@ -145,21 +138,22 @@
 
       <div class="album py-5 bg-body-tertiary">
         <div class="container">
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div v-for="movie in movies" :key="movie.id" class="col">
-              <div class="card shadow-sm" style="width: 300px;">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 d-flex justify-content-center">
+            <div v-for="movie in movies" :key="movie.id" class="col d-flex justify-content-center">
+              <div class="card shadow-sm" style="width: 18rem;"> <!-- Alterado para 18rem -->
                 <img :src="getPosterUrl(movie.poster_path)" class="img-fluid rounded-start" :alt="movie.title"
                   style="width: 100%;">
                 <h5 class="card-title">{{ movie.title }}</h5>
                 <div class="card-body">
-                  <p class="card-text">{{ movie.overview }}</p>
+                  <p class="card-text movie-description">{{ movie.overview }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                      <button type="button" class="teste btn btn-sm btn-outline-secondary">Ver mais</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Favoritar</button>
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -167,16 +161,17 @@
       </div>
 
 
+
     </main>
 
     <footer class="text-body-secondary py-5">
       <div class="container">
         <p class="float-end mb-1">
-          <a href="#">Back to top</a>
+          <a href="#">Voltar para o topo</a>
         </p>
-        <p class="mb-1">Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
-        <p class="mb-0">New to Bootstrap? <a href="/">Visit the homepage</a> or read our <a
-            href="../getting-started/introduction/">getting started guide</a>.</p>
+        <p class="mb-1">Netflix Brasil&copy; pagina feita consumindo API do TMDB!</p>
+        <p>Dúvidas? Ligue 0800 591 2876</p>
+        <p>info@account.netflix.com.</p>
       </div>
     </footer>
     <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
@@ -196,10 +191,12 @@ export default {
     return {
       movies: [],
       selectedMovie: null,
+      currentTheme: 'auto' // Valor padrão
     };
   },
   mounted() {
     this.fetchMovies();
+    this.updateTheme(this.currentTheme); // Defina o tema inicial
   },
   methods: {
     fetchMovies() {
@@ -221,9 +218,25 @@ export default {
     selectMovie(movie) {
       this.selectedMovie = movie;
     },
-  },
+    changeTheme(theme) {
+      this.currentTheme = theme; // Atualiza a variável de tema
+      this.updateTheme(theme);
+    },
+    updateTheme(theme) {
+      const htmlElement = document.documentElement; // Acesse o elemento <html>
+
+      if (theme === 'light') {
+        htmlElement.setAttribute('data-bs-theme', 'light');
+      } else if (theme === 'dark') {
+        htmlElement.setAttribute('data-bs-theme', 'dark');
+      } else {
+        htmlElement.removeAttribute('data-bs-theme'); // Remove para usar o tema automático
+      }
+    }
+  }
 };
 </script>
+
 
 <style>
 .bd-placeholder-img {
@@ -281,7 +294,6 @@ export default {
 .btn-bd-primary {
   --bd-violet-bg: #712cf9;
   --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
-
   --bs-btn-font-weight: 600;
   --bs-btn-color: var(--bs-white);
   --bs-btn-bg: var(--bd-violet-bg);
@@ -311,4 +323,25 @@ export default {
   width: 100%;
 }
 
+.album .container {
+  display: flex;
+  justify-content: center;
+}
+
+.row {
+  justify-content: center;
+}
+
+.teste {
+  margin-right: 15px;
+}
+
+.movie-description {
+  max-height: 4.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
 </style>

@@ -122,8 +122,8 @@
 
     <main>
 
-      <section class="py-5 text-center container">
-        <div class="row py-lg-5">
+      <section class="py-4 text-center container">
+        <div class="row py-lg-3">
           <div class="col-lg-6 col-md-8 mx-auto">
             <img src="../../public/images/Netflix_Logo_RGB.png" alt="logo" width="500">
             <p class="lead text-body-secondary">Bem-vindo à nossa página de catálogo de filmes! Descubra novas
@@ -140,7 +140,7 @@
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 d-flex justify-content-center">
             <div v-for="movie in movies" :key="movie.id" class="col d-flex justify-content-center">
-              <div class="card shadow-sm" style="width: 18rem;"> <!-- Alterado para 18rem -->
+              <div class="card shadow-sm" style="width: 18rem;">
                 <img :src="getPosterUrl(movie.poster_path)" class="img-fluid rounded-start" :alt="movie.title"
                   style="width: 100%;">
                 <h5 class="card-title">{{ movie.title }}</h5>
@@ -164,14 +164,14 @@
 
     </main>
 
-    <footer class="text-body-secondary py-5">
+    <footer class="bg-dark text-body-secondary py-4 ">
       <div class="container">
         <p class="float-end mb-1">
-          <a href="#">Voltar para o topo</a>
+          <a href="#" class="voltar link-offset-2 link-underline link-underline-opacity-0">Voltar para o topo</a>
         </p>
         <p class="mb-1">Netflix Brasil&copy; pagina feita consumindo API do TMDB!</p>
+        <p>info@account.netflix.com</p>
         <p>Dúvidas? Ligue 0800 591 2876</p>
-        <p>info@account.netflix.com.</p>
       </div>
     </footer>
     <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
@@ -191,12 +191,12 @@ export default {
     return {
       movies: [],
       selectedMovie: null,
-      currentTheme: 'auto' // Valor padrão
+      currentTheme: 'auto'
     };
   },
   mounted() {
     this.fetchMovies();
-    this.updateTheme(this.currentTheme); // Defina o tema inicial
+    this.updateTheme(this.currentTheme);
   },
   methods: {
     fetchMovies() {
@@ -219,18 +219,18 @@ export default {
       this.selectedMovie = movie;
     },
     changeTheme(theme) {
-      this.currentTheme = theme; // Atualiza a variável de tema
+      this.currentTheme = theme;
       this.updateTheme(theme);
     },
     updateTheme(theme) {
-      const htmlElement = document.documentElement; // Acesse o elemento <html>
+      const htmlElement = document.documentElement;
 
       if (theme === 'light') {
         htmlElement.setAttribute('data-bs-theme', 'light');
       } else if (theme === 'dark') {
         htmlElement.setAttribute('data-bs-theme', 'dark');
       } else {
-        htmlElement.removeAttribute('data-bs-theme'); // Remove para usar o tema automático
+        htmlElement.removeAttribute('data-bs-theme');
       }
     }
   }
@@ -343,5 +343,13 @@ export default {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+
+.container {
+  color: white;
+}
+
+.voltar{
+  color: #e9292c;
 }
 </style>

@@ -1,15 +1,13 @@
 <template>
-  <html lang="en" data-bs-theme="auto">
+  <html lang="pt-br" data-bs-theme="auto">
 
   <head>
-    <!-- <script src="../assets/js/color-modes.js"></script> -->
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.122.0">
-    <title>Album example · Bootstrap v5.3</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -78,48 +76,7 @@
       </ul>
 
     </div>
-
-
-    <header data-bs-theme="dark">
-      <div class="collapse text-bg-dark" id="navbarHeader">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-              <h4>Sobre</h4>
-              <p class="text-body-secondary">Bem-vindo à nossa página de catálogo de filmes, onde você pode explorar uma
-                vasta seleção de títulos de todos os gêneros! Descubra novas histórias, reveja clássicos e encontre
-                recomendações personalizadas para a sua próxima sessão de cinema. Aqui, cada filme conta uma história, e
-                estamos aqui para ajudar você a encontrá-las!</p>
-            </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4>Contatos</h4>
-              <ul class="list-unstyled">
-                <li><a href="https://x.com/NetflixBrasil?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-                    target="_blank" class="text-white">Twitter</a></li>
-                <li><a href="https://www.facebook.com/netflixbrasil/?locale=pt_BR" target="_blank"
-                    class="text-white">Facebook</a></li>
-                <li><a href="https://www.instagram.com/netflixbrasil/" target="_blank" class="text-white">Instagram</a>
-                </li>
-                <li><a href="https://www.youtube.com/channel/UCc1l5mTmAv2GC_PXrBpqyKQ" target="_blank"
-                    class="text-white">YouTube</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="navbar navbar-dark bg-dark shadow-sm">
-        <div class="container">
-          <a href="#" class="navbar-brand d-flex align-items-center">
-            <img src="../../public/images/Netflix_Logo_RGB.png" alt="logo" width="100">
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
-            aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </div>
-    </header>
-
+    <Navbar />
     <main>
 
       <section class="py-4 text-center container">
@@ -148,7 +105,7 @@
                   <p class="card-text movie-description">{{ movie.overview }}</p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                      <button type="button" class="teste btn btn-sm btn-outline-secondary">Ver mais</button>
+                      <button @click="goToMovie(movie.id)">Ver mais</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary">Favoritar</button>
                     </div>
                   </div>
@@ -163,19 +120,7 @@
 
 
     </main>
-
-    <footer class="bg-dark text-body-secondary py-4 ">
-      <div class="container">
-        <p class="float-end mb-1">
-          <a href="#" class="voltar link-offset-2 link-underline link-underline-opacity-0">Voltar para o topo</a>
-        </p>
-        <p class="mb-1">Netflix Brasil&copy; pagina feita consumindo API do TMDB!</p>
-        <p>info@account.netflix.com</p>
-        <p>Dúvidas? Ligue 0800 591 2876</p>
-      </div>
-    </footer>
-    <!-- <script src="../assets/dist/js/bootstrap.bundle.min.js"></script> -->
-
+    <Footer />
   </body>
 
   </html>
@@ -184,9 +129,19 @@
 
 <script>
 import axios from 'axios';
+import Movies from './Movies.vue';
+import Navbar from './Navbar.vue';
+import Footer from './Footer.vue';
+
+
 
 export default {
   name: 'Home',
+  components: {
+    Movies,
+    Navbar,
+    Footer
+  },
   data() {
     return {
       movies: [],
@@ -215,8 +170,9 @@ export default {
     getPosterUrl(path) {
       return `https://image.tmdb.org/t/p/w500${path}`;
     },
-    selectMovie(movie) {
-      this.selectedMovie = movie;
+    goToMovie(movieId) {
+
+      this.$router.push({ name: 'movies', params: { id: movieId } });
     },
     changeTheme(theme) {
       this.currentTheme = theme;
@@ -236,6 +192,7 @@ export default {
   }
 };
 </script>
+
 
 
 <style>
@@ -349,7 +306,7 @@ export default {
   color: white;
 }
 
-.voltar{
+.voltar {
   color: #e9292c;
 }
 </style>
